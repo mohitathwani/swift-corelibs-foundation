@@ -67,7 +67,7 @@ class TestNSString : XCTestCase {
             ("test_CFStringCreateMutableCopy", test_CFStringCreateMutableCopy),
             ("test_FromContentsOfURL",test_FromContentsOfURL),
             ("test_FromContentsOfURLUsedEncodingUTF16BE", test_FromContentsOfURLUsedEncodingUTF16BE),
-	    ("test_FromContentOfFile",test_FromContentOfFile),
+            ("test_FromContentOfFile",test_FromContentOfFile),
             ("test_swiftStringUTF16", test_swiftStringUTF16),
             // This test takes forever on build servers; it has been seen up to 1852.084 seconds
 //            ("test_completePathIntoString", test_completePathIntoString),
