@@ -1270,7 +1270,7 @@ extension NSString {
           enc?.pointee = String.Encoding.utf8.rawValue
         }
 
-        guard let cf = CFStringCreateWithBytes(kCFAllocatorDefault, bytePtr, readResult.length, CFStringConvertNSStringEncodingToEncoding(enc!.pointee), true) else {
+        guard let enc = enc, let cf = CFStringCreateWithBytes(kCFAllocatorDefault, bytePtr, readResult.length, CFStringConvertNSStringEncodingToEncoding(enc.pointee), true) else {
             throw NSError(domain: NSCocoaErrorDomain, code: CocoaError.fileReadInapplicableStringEncoding.rawValue, userInfo: [
                 "NSDebugDescription" : "Unable to create a string using the specified encoding."
                 ])
