@@ -75,7 +75,7 @@ open class NSRegularExpression: NSObject, NSCopying, NSCoding {
     /* An instance of NSRegularExpression is created from a regular expression pattern and a set of options.  If the pattern is invalid, nil will be returned and an NSError will be returned by reference.  The pattern syntax currently supported is that specified by ICU.
     */
     
-    public init(pattern: String, options: Options) throws {
+    public init(pattern: String, options: Options = []) throws {
         var error: Unmanaged<CFError>?
 #if os(OSX) || os(iOS)
         let opt =  _CFRegularExpressionOptions(rawValue: options.rawValue)
@@ -277,12 +277,12 @@ extension NSRegularExpression {
         var count = 0
         var offset = 0
         for result in results {
-            var currentRnage = result.range
+            var currentRange = result.range
             let replacement = replacementString(for: result, in: string._swiftObject, offset: offset, template: templ)
-            currentRnage.location += offset
+            currentRange.location += offset
             
-            string.replaceCharacters(in: currentRnage, with: replacement)
-            offset += replacement.length - currentRnage.length
+            string.replaceCharacters(in: currentRange, with: replacement)
+            offset += replacement.length - currentRange.length
             count += 1
         }
         return count
