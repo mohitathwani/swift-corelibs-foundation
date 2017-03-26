@@ -1301,7 +1301,6 @@ extension NSString {
         let readResult = try NSData(contentsOf: url, options:[])
 
         let bytePtr = readResult.bytes.bindMemory(to: UInt8.self, capacity:readResult.length)
-
         if readResult.length >= 2 && bytePtr[0] == 254 && bytePtr[1] == 255 {
           enc?.pointee = String.Encoding.utf16BigEndian.rawValue
         }
